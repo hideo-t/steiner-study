@@ -48,11 +48,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.header-symbol {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-}
+.header-symbol { font-size: 3rem; margin-bottom: 1rem; opacity: 0.8; }
 
 .header h1 {
   font-family: var(--display);
@@ -99,11 +95,7 @@ body {
   transition: all 0.3s;
 }
 
-.nav-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
+.nav-btn:hover { border-color: var(--gold); color: var(--gold); }
 .nav-btn.active {
   background: linear-gradient(135deg, var(--gold), var(--gold2));
   color: var(--bg);
@@ -126,16 +118,8 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.progress-label {
-  font-size: 0.85rem;
-  color: var(--text2);
-}
-
-.progress-value {
-  font-family: var(--display);
-  font-size: 1.1rem;
-  color: var(--gold);
-}
+.progress-label { font-size: 0.85rem; color: var(--text2); }
+.progress-value { font-family: var(--display); font-size: 1.1rem; color: var(--gold); }
 
 .progress-bar {
   height: 6px;
@@ -156,11 +140,7 @@ body {
 .section.active { display: block; }
 
 /* Chapter List */
-.chapter-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+.chapter-list { display: flex; flex-direction: column; gap: 1rem; }
 
 .chapter-card {
   background: var(--card);
@@ -176,32 +156,17 @@ body {
 .chapter-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
   background: var(--gold);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.chapter-card:hover {
-  border-color: var(--gold);
-  transform: translateX(4px);
-}
-
-.chapter-card:hover::before {
-  opacity: 1;
-}
-
-.chapter-card.completed {
-  border-color: var(--green);
-}
-
-.chapter-card.completed::before {
-  background: var(--green);
-  opacity: 1;
-}
+.chapter-card:hover { border-color: var(--gold); transform: translateX(4px); }
+.chapter-card:hover::before { opacity: 1; }
+.chapter-card.completed { border-color: var(--green); }
+.chapter-card.completed::before { background: var(--green); opacity: 1; }
 
 .chapter-header {
   display: flex;
@@ -286,11 +251,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.detail-title {
-  font-size: 1.75rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
+.detail-title { font-size: 1.75rem; font-weight: 500; margin-bottom: 0.5rem; }
 
 .detail-title-de {
   font-family: var(--display);
@@ -299,10 +260,93 @@ body {
   font-style: italic;
 }
 
-/* Concepts */
-.concepts-section {
-  margin-bottom: 2rem;
+/* Points List */
+.points-section { margin-bottom: 2rem; }
+
+.points-title {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
+.points-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.point-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.point-item:hover { border-color: rgba(233,196,106,0.3); }
+.point-item.expanded { border-color: var(--gold); }
+
+.point-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.point-header:hover { background: rgba(233,196,106,0.05); }
+
+.point-num {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--gold);
+  min-width: 24px;
+  font-weight: 500;
+}
+
+.point-summary {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.point-toggle {
+  color: var(--text3);
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+
+.point-item.expanded .point-toggle { transform: rotate(180deg); }
+
+.point-detail {
+  display: none;
+  padding: 0 1.25rem 1.25rem 3rem;
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
+.point-item.expanded .point-detail { display: block; }
+
+.point-detail p { margin-bottom: 0.75rem; }
+.point-detail p:last-child { margin-bottom: 0; }
+
+.point-keyword {
+  display: inline-block;
+  background: rgba(233,196,106,0.15);
+  color: var(--gold);
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
+
+/* Concepts */
+.concepts-section { margin-bottom: 2rem; }
 
 .concepts-title {
   font-size: 1rem;
@@ -313,11 +357,7 @@ body {
   gap: 0.5rem;
 }
 
-.concept-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+.concept-list { display: flex; flex-direction: column; gap: 1rem; }
 
 .concept-item {
   background: var(--bg);
@@ -326,11 +366,7 @@ body {
   padding: 1.25rem;
 }
 
-.concept-term {
-  font-weight: 500;
-  color: var(--gold2);
-  margin-bottom: 0.25rem;
-}
+.concept-term { font-weight: 500; color: var(--gold2); margin-bottom: 0.25rem; }
 
 .concept-term-de {
   font-family: var(--display);
@@ -340,39 +376,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.concept-def {
-  font-size: 0.9rem;
-  color: var(--text2);
-  line-height: 1.7;
-}
-
-/* Content */
-.content-section {
-  margin-bottom: 2rem;
-}
-
-.content-title {
-  font-size: 1rem;
-  color: var(--gold);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.content-text {
-  font-size: 0.95rem;
-  color: var(--text2);
-  line-height: 2;
-}
-
-.content-text p {
-  margin-bottom: 1rem;
-}
-
-.content-text p:last-child {
-  margin-bottom: 0;
-}
+.concept-def { font-size: 0.9rem; color: var(--text2); line-height: 1.7; }
 
 /* Meditation */
 .meditation-section {
@@ -400,15 +404,8 @@ body {
 }
 
 /* Notes */
-.notes-section {
-  margin-bottom: 2rem;
-}
-
-.notes-title {
-  font-size: 1rem;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
+.notes-section { margin-bottom: 2rem; }
+.notes-title { font-size: 1rem; color: var(--gold); margin-bottom: 1rem; }
 
 .notes-textarea {
   width: 100%;
@@ -424,10 +421,7 @@ body {
   resize: vertical;
 }
 
-.notes-textarea:focus {
-  outline: none;
-  border-color: var(--gold);
-}
+.notes-textarea:focus { outline: none; border-color: var(--gold); }
 
 /* Complete Button */
 .complete-btn {
@@ -453,14 +447,10 @@ body {
   box-shadow: 0 4px 20px rgba(233,196,106,0.3);
 }
 
-.complete-btn.completed {
-  background: var(--green);
-}
+.complete-btn.completed { background: var(--green); }
 
 /* Glossary */
-.glossary-search {
-  margin-bottom: 1.5rem;
-}
+.glossary-search { margin-bottom: 1.5rem; }
 
 .glossary-input {
   width: 100%;
@@ -473,16 +463,9 @@ body {
   font-size: 0.9rem;
 }
 
-.glossary-input:focus {
-  outline: none;
-  border-color: var(--gold);
-}
+.glossary-input:focus { outline: none; border-color: var(--gold); }
 
-.glossary-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+.glossary-list { display: flex; flex-direction: column; gap: 1rem; }
 
 .glossary-item {
   background: var(--card);
@@ -491,11 +474,7 @@ body {
   padding: 1.25rem;
 }
 
-.glossary-term {
-  font-weight: 500;
-  color: var(--gold);
-  margin-bottom: 0.25rem;
-}
+.glossary-term { font-weight: 500; color: var(--gold); margin-bottom: 0.25rem; }
 
 .glossary-term-de {
   font-family: var(--display);
@@ -505,25 +484,21 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.glossary-def {
-  font-size: 0.9rem;
-  color: var(--text2);
-  line-height: 1.7;
-}
+.glossary-def { font-size: 0.9rem; color: var(--text2); line-height: 1.7; }
 
-/* My Notes Section */
-.my-notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+/* My Notes */
+.my-notes-list { display: flex; flex-direction: column; gap: 1rem; }
 
 .my-note-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
 }
+
+.my-note-card:hover { border-color: var(--gold); }
 
 .my-note-header {
   display: flex;
@@ -532,15 +507,8 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.my-note-chapter {
-  font-size: 0.85rem;
-  color: var(--gold);
-}
-
-.my-note-date {
-  font-size: 0.75rem;
-  color: var(--text3);
-}
+.my-note-chapter { font-size: 0.85rem; color: var(--gold); }
+.my-note-date { font-size: 0.75rem; color: var(--text3); }
 
 .my-note-content {
   font-size: 0.9rem;
@@ -556,11 +524,7 @@ body {
   color: var(--text3);
 }
 
-.empty-state-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
+.empty-state-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
 
 /* Footer */
 .footer {
@@ -572,17 +536,14 @@ body {
   font-size: 0.8rem;
 }
 
-.footer a {
-  color: var(--gold);
-  text-decoration: none;
-}
-
 /* Responsive */
 @media (max-width: 600px) {
   .app { padding: 1rem; }
   .header h1 { font-size: 1.75rem; }
   .chapter-card { padding: 1.25rem; }
   .chapter-detail { padding: 1.25rem; }
+  .point-header { padding: 0.875rem 1rem; }
+  .point-detail { padding: 0 1rem 1rem 2.5rem; }
 }
 </style>
 </head>
@@ -612,17 +573,14 @@ body {
     </div>
   </div>
 
-  <!-- Chapters Section -->
   <section class="section active" id="sec-chapters">
     <div class="chapter-list" id="chapterList"></div>
   </section>
 
-  <!-- Chapter Detail -->
   <section class="section" id="sec-detail">
     <div class="chapter-detail" id="chapterDetail"></div>
   </section>
 
-  <!-- Glossary Section -->
   <section class="section" id="sec-glossary">
     <div class="glossary-search">
       <input type="text" class="glossary-input" placeholder="用語を検索..." oninput="filterGlossary(this.value)">
@@ -630,20 +588,19 @@ body {
     <div class="glossary-list" id="glossaryList"></div>
   </section>
 
-  <!-- Notes Section -->
   <section class="section" id="sec-notes">
     <div class="my-notes-list" id="myNotesList"></div>
   </section>
 
   <footer class="footer">
-    神秘学概論 学習アプリ v1.0<br>
+    神秘学概論 学習アプリ v1.1<br>
     Based on "Die Geheimwissenschaft im Umriß" (1910)
   </footer>
 </div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
-// DATA
+// DATA - 各章10項目の要約と詳細
 // ═══════════════════════════════════════════════════════════
 
 const chapters = [
@@ -653,16 +610,53 @@ const chapters = [
     title: '神秘学の性格',
     titleDe: 'Charakter der Geheimwissenschaft',
     desc: '神秘学とは何か、その認識方法と科学的態度について。感覚を超えた世界への道筋を示す序論。',
+    points: [
+      {
+        summary: '神秘学は「秘密の」学ではなく、通常は隠されている世界を扱う学問である',
+        detail: '「神秘学」という言葉は誤解を招きやすいが、これは秘密結社の教えではない。感覚では認識できない霊的世界を、自然科学が物質を研究するように体系的に研究する学問である。「隠された」とは、通常の意識では見えないという意味である。'
+      },
+      {
+        summary: '自然科学が物質を研究するように、神秘学は霊的世界を研究する',
+        detail: '神秘学は科学に反するものではなく、科学の延長線上にある。自然科学が感覚で捉えられる現象を研究するのに対し、神秘学は感覚を超えた領域を同じく厳密な方法で研究する。両者は対立するのではなく、補完し合う関係にある。'
+      },
+      {
+        summary: '霊的認識は特別な才能ではなく、正しい訓練により誰でも到達できる',
+        detail: 'シュタイナーは、霊的認識が選ばれた少数者だけのものではないことを強調する。数学を学ぶように、正しい方法で魂を訓練すれば、誰でも霊的真理を直接体験できる。これは信仰の問題ではなく、認識の問題である。'
+      },
+      {
+        summary: '神秘学の知識を受け入れるのに、まず自分で霊視する必要はない',
+        detail: '本を読んで数学を理解するのに数学者である必要がないように、神秘学の成果を理解するのに霊能者である必要はない。健全な判断力と偏見のない思考があれば、その内容の真理性を認識できる。'
+      },
+      {
+        summary: '霊的研究者の報告は、論理と直観により検証できる',
+        detail: '神秘学の主張は盲目的に信じる必要はない。論理的思考と内的な真理感覚により、その内容を吟味できる。真理は自ら光を放ち、魂に響く力を持っている。疑問を持つことは健全な態度である。'
+      },
+      {
+        summary: '唯物論的世界観は、感覚の範囲に限定された見方にすぎない',
+        detail: '唯物論は感覚で捉えられるものだけを実在と見なすが、これは認識の限界を実在の限界と混同している。目に見えないものが存在しないわけではない。電波や重力のように、見えなくても作用するものは多い。'
+      },
+      {
+        summary: '霊的世界の認識には、魂の特別な訓練と道徳的発展が必要',
+        detail: '霊的認識は単なる知識の蓄積ではなく、魂全体の変容を必要とする。集中力、思考の明晰さ、感情の浄化、道徳的な強さ——これらが霊的器官の発達の基盤となる。内面の成長なしに霊的認識はありえない。'
+      },
+      {
+        summary: '現代人は霊的なものを求める内的衝動を持っている',
+        detail: '物質文明の発展にもかかわらず（あるいはそれゆえに）、現代人の魂は霊的な渇きを感じている。科学は多くを説明するが、人生の意味、死後の問題、道徳の根拠については沈黙する。この空虚さが霊的探求への動機となる。'
+      },
+      {
+        summary: '神秘学は迷信や空想とは根本的に異なる',
+        detail: '神秘学は厳密な方法論に基づく。霊的研究者は自分の体験を批判的に吟味し、主観的願望と客観的認識を区別する訓練を積む。感情的な憧れや空想的な思い込みは、真の霊的認識の障害となる。'
+      },
+      {
+        summary: '本書は霊的研究の成果を、思考で追体験できる形で提示する',
+        detail: 'シュタイナーは、読者が霊視能力を持たなくても理解できるよう、霊的真理を思考可能な形で表現している。読者は自分の思考力を通じて、これらの内容を内的に追体験し、その真理性を確認できる。'
+      }
+    ],
     concepts: [
-      { term: '神秘学', termDe: 'Geheimwissenschaft', def: '感覚で知覚できる世界の背後にある、隠された霊的現実を探求する学問。「秘密の」科学ではなく、通常は隠されている領域を扱う科学。' },
-      { term: '超感覚的認識', termDe: 'übersinnliche Erkenntnis', def: '物質的感覚器官を超えて、霊的世界を直接認識する能力。訓練によって開発可能。' },
+      { term: '神秘学', termDe: 'Geheimwissenschaft', def: '感覚で知覚できる世界の背後にある、隠された霊的現実を探求する学問。' },
+      { term: '超感覚的認識', termDe: 'übersinnliche Erkenntnis', def: '物質的感覚器官を超えて、霊的世界を直接認識する能力。' },
       { term: '霊的研究', termDe: 'Geistesforschung', def: '自然科学が物質世界を研究するように、霊的世界を体系的に研究すること。' }
     ],
-    content: `
-      <p>神秘学は、通常の感覚では認識できない世界の法則を探求します。これは「秘密」の学問ではなく、通常は「隠されている」領域を扱う学問です。</p>
-      <p>自然科学が物質世界を研究するのと同様に、神秘学は霊的世界を体系的に研究します。しかしその方法は異なります。霊的認識には、魂の特別な訓練が必要です。</p>
-      <p>シュタイナーは、この認識が万人に開かれていることを強調します。正しい道を歩めば、誰でも霊的真理を直接体験できるのです。</p>
-    `,
     meditation: '「私は感覚の背後にある真実を求める。見えるものの奥に、見えないものが存在する。」この言葉を静かに繰り返し、その意味を深く味わってください。'
   },
   {
@@ -671,24 +665,58 @@ const chapters = [
     title: '人間の本質',
     titleDe: 'Das Wesen des Menschen',
     desc: '人間を構成する四つの要素—物質体、エーテル体、アストラル体、自我—の詳細な解説。',
+    points: [
+      {
+        summary: '人間は物質体・エーテル体・アストラル体・自我の四つの構成要素からなる',
+        detail: '人間は単なる物質的存在ではなく、四つの異なる層から構成されている。各層は異なる世界に属し、異なる法則に従う。この理解が、人間の生、死、病気、意識、道徳などを理解する鍵となる。'
+      },
+      {
+        summary: '物質体は鉱物界と共通し、死後は物質界の法則に従って分解する',
+        detail: '私たちの肉体は、鉱物と同じ物理・化学法則に従う。炭素、水素、酸素などの元素から構成され、死後はこれらの元素に分解して自然に還る。物質体だけなら、人間は精巧な機械にすぎない。'
+      },
+      {
+        summary: 'エーテル体（生命体）は植物と共通し、成長・再生・記憶の基盤となる',
+        detail: 'エーテル体は物質体に生命を与える力の担い手である。植物もこれを持つ。成長させ、傷を癒し、物質の崩壊に抵抗する。また記憶の基盤でもあり、人生の全体験がここに刻まれる。睡眠中も物質体と結びついている。'
+      },
+      {
+        summary: 'アストラル体（感受体）は動物と共通し、感情・欲望・意識の座である',
+        detail: 'アストラル体により、快・不快、喜び・悲しみ、欲望・嫌悪を感じることができる。動物もこれを持つため、痛みを感じ、喜びを表現できる。アストラル体は睡眠中に物質体・エーテル体から離れ、霊的世界で活動する。'
+      },
+      {
+        summary: '自我は人間だけが持ち、「私」と言える自己意識の源泉である',
+        detail: '「私」という言葉は、他の誰も自分について使えない唯一の言葉である。自我により人間は自己を意識し、自分を世界から区別し、道徳的判断を下すことができる。自我は霊的世界に直接根ざす人間の神的核心である。'
+      },
+      {
+        summary: '自我の働きにより、下位の構成要素は高次のものへと変容する',
+        detail: '自我は単に存在するだけでなく、能動的に働きかける。アストラル体を浄化・変容させると霊我（マナス）が、エーテル体を変容させると生命霊（ブッディ）が、物質体を変容させると霊人（アートマ）が生じる。'
+      },
+      {
+        summary: '霊我・生命霊・霊人は、人間が発達させるべき高次の構成要素である',
+        detail: 'これらは現在の人間にはまだ萌芽的にしか存在しない。長い進化の過程で、人間は意識的な努力により、これらを完全に発達させる。それが人間進化の目標であり、意味である。'
+      },
+      {
+        summary: '各構成要素は異なる世界に属し、死と睡眠で異なる振る舞いをする',
+        detail: '物質体は物質界、エーテル体は生命界、アストラル体はアストラル界（魂の世界）、自我は霊界に属する。睡眠中はアストラル体と自我が離れ、死においてはエーテル体も離れる。各構成要素はその本来の世界に還る。'
+      },
+      {
+        summary: '感覚と思考は、自我がアストラル体と協働して働く場所である',
+        detail: '私たちが何かを知覚し、それについて考えるとき、自我はアストラル体を通じて働いている。感覚器官は物質体に属するが、感覚体験そのものはアストラル体の活動であり、それを「私の」体験とするのは自我である。'
+      },
+      {
+        summary: '人間の七つの構成要素は、宇宙の七つの原理と対応している',
+        detail: '物質体・エーテル体・アストラル体・自我・霊我・生命霊・霊人の七要素は、宇宙の構造を反映している。人間は小宇宙（ミクロコスモス）として大宇宙（マクロコスモス）の全てを内に含んでいる。'
+      }
+    ],
     concepts: [
       { term: '物質体', termDe: 'Physischer Leib', def: '鉱物界と共有する物質的身体。死後は分解して物質界に戻る。' },
-      { term: 'エーテル体（生命体）', termDe: 'Ätherleib / Lebensleib', def: '植物界と共有する生命力の担い手。成長、再生、記憶の基盤。睡眠中も物質体と結びついている。' },
-      { term: 'アストラル体（感受体）', termDe: 'Astralleib / Empfindungsleib', def: '動物界と共有する感情・欲望の担い手。苦楽、衝動、情熱の座。睡眠中は物質体から離れる。' },
-      { term: '自我', termDe: 'Ich', def: '人間のみが持つ霊的核心。自己意識、道徳性、個性の源泉。「私」と言える存在。' },
-      { term: '霊我（マナス）', termDe: 'Geistselbst / Manas', def: '自我がアストラル体を変容させて生まれる高次の構成要素。' },
-      { term: '生命霊（ブッディ）', termDe: 'Lebensgeist / Buddhi', def: '自我がエーテル体を変容させて生まれる高次の構成要素。' },
-      { term: '霊人（アートマ）', termDe: 'Geistesmensch / Atma', def: '自我が物質体を変容させて生まれる最高次の構成要素。' }
+      { term: 'エーテル体', termDe: 'Ätherleib / Lebensleib', def: '植物界と共有する生命力の担い手。成長、再生、記憶の基盤。' },
+      { term: 'アストラル体', termDe: 'Astralleib / Empfindungsleib', def: '動物界と共有する感情・欲望の担い手。苦楽、衝動、情熱の座。' },
+      { term: '自我', termDe: 'Ich', def: '人間のみが持つ霊的核心。自己意識、道徳性、個性の源泉。' },
+      { term: '霊我', termDe: 'Geistselbst / Manas', def: '自我がアストラル体を変容させて生まれる高次の構成要素。' },
+      { term: '生命霊', termDe: 'Lebensgeist / Buddhi', def: '自我がエーテル体を変容させて生まれる高次の構成要素。' },
+      { term: '霊人', termDe: 'Geistesmensch / Atma', def: '自我が物質体を変容させて生まれる最高次の構成要素。' }
     ],
-    content: `
-      <p>人間は単なる物質的存在ではありません。シュタイナーは、人間を四つの基本的な構成要素から成るものとして描写します。</p>
-      <p><strong>物質体</strong>は、私たちが通常「身体」と呼ぶものです。鉱物と同じ法則に従い、死後は分解します。</p>
-      <p><strong>エーテル体</strong>は、物質体に生命を与える力の担い手です。植物もこれを持っています。記憶と成長の基盤となります。</p>
-      <p><strong>アストラル体</strong>は、感情と意識の担い手です。動物もこれを持ち、快・不快を感じることができます。</p>
-      <p><strong>自我</strong>は、人間だけが持つ霊的核心です。これにより人間は「私」と言え、自己を意識し、道徳的存在となれます。</p>
-      <p>さらに、自我の働きによって下位の構成要素が変容すると、霊我・生命霊・霊人という高次の要素が発達します。</p>
-    `,
-    meditation: '「私の中には物質を超えた何かがある。生命があり、感情があり、そして—私自身がいる。」自分の存在の層を、内側から観察してみてください。'
+    meditation: '「私の中には物質を超えた何かがある。生命があり、感情があり、そして——私自身がいる。」自分の存在の層を、内側から観察してみてください。'
   },
   {
     id: 3,
@@ -696,21 +724,56 @@ const chapters = [
     title: '眠りと死',
     titleDe: 'Schlaf und Tod',
     desc: '睡眠と死における人間の構成要素の変化。死後の世界と輪廻転生の霊的プロセス。',
+    points: [
+      {
+        summary: '睡眠中、アストラル体と自我は物質体・エーテル体から離れて霊的世界で活動する',
+        detail: '毎晩の睡眠で、私たちの意識の担い手であるアストラル体と自我は、肉体を離れて霊的世界に入る。そこで昼間の疲労が癒され、宇宙的な力によって回復が行われる。だから睡眠は生命にとって不可欠である。'
+      },
+      {
+        summary: '夢は、アストラル体がまだ完全に離れていない中間状態で生じる',
+        detail: '夢の中では、アストラル体は部分的に物質体と結びついている。そのため、感覚印象が歪んだ形で意識に現れる。夢の象徴的性格は、アストラル体の本来の表現様式を反映している。'
+      },
+      {
+        summary: '死において、エーテル体も物質体から離れ、生涯の記憶がパノラマとして展開する',
+        detail: '死の瞬間、エーテル体が物質体から離れる。その際、エーテル体に刻まれた全人生の記憶が、一つの巨大なタブローとして意識に現れる。時間の順序なく、全体が同時に見える。この体験は数日間続く。'
+      },
+      {
+        summary: 'エーテル体の溶解後、魂はカマロカ（欲望界）で浄化の期間を過ごす',
+        detail: 'エーテル体が宇宙のエーテルに溶解した後、アストラル体と自我はカマロカに入る。ここで地上の欲望と執着が浄化される。物質的な満足を得られない苦しみを通じて、魂は欲望から解放されていく。'
+      },
+      {
+        summary: 'カマロカの期間は、地上生活のおよそ三分の一の長さである',
+        detail: '私たちは人生の約三分の一を睡眠に費やす。その時間に相当する期間、魂はカマロカで過ごす。睡眠中に無意識に行っていた浄化が、死後は意識的な体験として経験される。'
+      },
+      {
+        summary: 'カマロカでは、自分が他者に与えた苦しみを、相手の立場から体験する',
+        detail: 'これがカルマの法則の一つの働きである。他者を傷つけた行為は、カマロカでその相手の感情として追体験される。これにより魂は道徳的に成熟し、来世でより良い行動をとる衝動が形成される。'
+      },
+      {
+        summary: 'カマロカの後、魂はデヴァチャン（霊界）に入り、次の転生を準備する',
+        detail: 'デヴァチャンは純粋な霊的世界である。ここで魂は過去の人生の精髄を霊的な実りへと変容させ、次の人生の青写真を描く。高次の霊的存在との協働により、来世の運命が形成される。'
+      },
+      {
+        summary: '輪廻転生は、自我が多くの人生を通じて成長するプロセスである',
+        detail: '一回の人生では、魂が学ぶべき全てを学ぶことはできない。異なる時代、文化、性別、環境での体験を通じて、自我は徐々に完全な人間へと成熟していく。各人生は、魂の永遠の旅路の一章である。'
+      },
+      {
+        summary: 'カルマは道徳的な因果法則であり、行為の結果が将来の運命を形作る',
+        detail: '物理世界に因果法則があるように、道徳世界にもカルマという因果法則がある。善い行いは善い結果を、悪い行いは悪い結果をもたらす——ただし、しばしば来世において。カルマは罰ではなく、学びの機会である。'
+      },
+      {
+        summary: '死は終わりではなく、霊的世界への誕生であり、新たな始まりである',
+        detail: '地上への誕生が霊的世界からの「死」であるように、肉体の死は霊的世界への「誕生」である。死を恐れる必要はない。それは変容であり、魂がより広い世界へと解放される瞬間である。'
+      }
+    ],
     concepts: [
       { term: '睡眠', termDe: 'Schlaf', def: 'アストラル体と自我が物質体・エーテル体から離れる状態。霊的世界で回復が行われる。' },
       { term: '死', termDe: 'Tod', def: 'エーテル体も物質体から離れる完全な分離。数日間の記憶のパノラマの後、エーテル体も溶解する。' },
       { term: 'カマロカ', termDe: 'Kamaloka', def: '死後、アストラル体の欲望が浄化される期間。地上生活の約三分の一の期間続く。' },
-      { term: 'デヴァチャン（霊界）', termDe: 'Devachan / Geisterland', def: 'カマロカの後に入る純粋な霊的領域。次の転生の準備が行われる。' },
+      { term: 'デヴァチャン', termDe: 'Devachan / Geisterland', def: 'カマロカの後に入る純粋な霊的領域。次の転生の準備が行われる。' },
       { term: '輪廻転生', termDe: 'Wiederverkörperung', def: '魂が繰り返し地上に生まれ変わること。各転生で自我が成長する。' },
       { term: 'カルマ', termDe: 'Karma', def: '行為の結果が将来に影響を与える宇宙的法則。道徳的因果律。' }
     ],
-    content: `
-      <p>睡眠と死は、同じプロセスの異なる段階として理解できます。</p>
-      <p><strong>睡眠</strong>において、アストラル体と自我は物質体・エーテル体から離れ、霊的世界で活動します。しかしエーテル体は物質体と結びついたままなので、生命は維持されます。</p>
-      <p><strong>死</strong>においては、エーテル体も物質体から離れます。最初の数日間、死者は自分の全生涯を一つのパノラマとして体験します。これはエーテル体に刻まれた記憶の解放です。</p>
-      <p>その後、アストラル体の欲望が浄化される<strong>カマロカ</strong>の期間を経て、純粋な霊的世界<strong>デヴァチャン</strong>に入ります。</p>
-      <p>デヴァチャンでは、過去の人生の成果を霊的に消化し、次の転生の計画を立てます。そして再び地上に生まれ、新たな学びを始めるのです。</p>
-    `,
     meditation: '毎晩の眠りは、小さな死です。目覚めは、小さな誕生です。眠りに入る瞬間、意識がどのように変化するかを観察してみてください。'
   },
   {
@@ -719,19 +782,54 @@ const chapters = [
     title: '宇宙進化—土星紀',
     titleDe: 'Die Weltentwickelung — Saturn',
     desc: '地球以前の宇宙進化。土星紀における物質体の萌芽と熱の世界。',
+    points: [
+      {
+        summary: '現在の地球は、長い宇宙進化の一段階であり、以前に三つの惑星状態があった',
+        detail: '地球は最初から現在の姿だったわけではない。土星→太陽→月→地球と、四つの大きな段階を経て進化してきた。各段階で異なる存在が発達し、人間の各構成要素が形成された。'
+      },
+      {
+        summary: '土星紀は最初の惑星状態で、純粋な熱からなる世界だった',
+        detail: '土星紀には、まだ気体も液体も固体もなかった。宇宙は純粋な熱の球体であり、空間的な境界は熱の差異によってのみ区別された。これは私たちの想像を超えた状態である。'
+      },
+      {
+        summary: '土星紀で「意志の霊たち」（座天使）が人間の物質体の萌芽を創造した',
+        detail: '座天使（トローネ）と呼ばれる高次の霊的存在が、自らの意志の実体を犠牲として放射し、それが人間の物質体の最初の萌芽となった。これは贈り物であり、犠牲の行為だった。'
+      },
+      {
+        summary: '土星紀の人間は、現在の鉱物よりも低い意識状態にあった',
+        detail: '土星期の人間の萌芽には、意識はなかった。現在の深い昏睡状態よりもさらに無意識の状態である。しかし、この無意識の中で、将来の全ての発展の基礎が築かれた。'
+      },
+      {
+        summary: '土星紀には「時間の霊たち」など、多くの霊的階層が活動していた',
+        detail: '座天使だけでなく、セラフィム、ケルビム、時間の霊たち（アルカイ）など、様々な階層の霊的存在が土星の進化に関わっていた。各存在は自らの発展段階に応じた役割を果たした。'
+      },
+      {
+        summary: '土星紀の終わりに、宇宙はプララヤ（休息期間）に入った',
+        detail: '各惑星状態の間には、顕現が霊的世界に溶け込む休息期間がある。これは睡眠と覚醒の宇宙的スケールでの繰り返しである。プララヤの間に、次の段階への準備が霊的に行われる。'
+      },
+      {
+        summary: '土星紀の熱は、意志の物質的表現であり、愛の力と関係している',
+        detail: '熱は最も精妙な物質状態であり、意志や愛の物質的対応物である。私たちが温かさを感じるとき、それは意志と愛の最も根源的な形を体験している。土星紀の熱は、座天使の愛の犠牲の表現だった。'
+      },
+      {
+        summary: '人間の感覚器官の萌芽が、土星紀に形成され始めた',
+        detail: '現在の私たちの感覚器官——目、耳、皮膚など——の最初の萌芽は、土星紀に遡る。もちろん当時は全く異なる形態だったが、その霊的な原型がこの時期に創造された。'
+      },
+      {
+        summary: '土星紀の認識は、アカシャ年代記を読むことで可能になる',
+        detail: '宇宙には全ての出来事が記録された霊的記録がある。これをアカシャ年代記という。正しく訓練された霊視者は、このクロニクルを読んで、太古の宇宙進化を認識することができる。'
+      },
+      {
+        summary: '土星紀の理解は、宇宙と人間の意味を理解する鍵である',
+        detail: '土星紀を理解することで、人間存在の根源的な意味が明らかになる。私たちは偶然の産物ではなく、高次の存在たちの意識的な創造と犠牲によって生み出された。物質体そのものが、神的な愛の贈り物なのである。'
+      }
+    ],
     concepts: [
       { term: '土星紀', termDe: 'Saturnzustand', def: '地球進化の最初の段階。純粋な熱からなる世界で、人間の物質体の萌芽が形成された。' },
-      { term: '意志の霊たち（座天使）', termDe: 'Geister des Willens / Throne', def: '土星紀で熱を放射し、人間の物質体の基礎を与えた高次の霊的存在。' },
+      { term: '意志の霊たち', termDe: 'Geister des Willens / Throne', def: '土星紀で熱を放射し、人間の物質体の基礎を与えた高次の霊的存在。' },
       { term: '熱エーテル', termDe: 'Wärmeäther', def: '土星紀の基本物質。まだ気体でも液体でも固体でもない、純粋な熱の状態。' },
-      { term: 'プララヤ（宇宙的休息）', termDe: 'Pralaya', def: '各惑星状態の間にある休息期間。顕現が霊的世界に溶解する。' }
+      { term: 'プララヤ', termDe: 'Pralaya', def: '各惑星状態の間にある休息期間。顕現が霊的世界に溶解する。' }
     ],
-    content: `
-      <p>現在の地球は、長い宇宙進化の一段階にすぎません。シュタイナーは、四つの大きな惑星状態を描写します。</p>
-      <p><strong>土星紀</strong>は最初の段階です。この時、宇宙は純粋な熱からなる球体でした。まだ光も空気も水も固体もありません。</p>
-      <p>この熱の世界で、「意志の霊たち」（座天使）が自らの存在の一部を犠牲にし、人間の物質体の最初の萌芽を形成しました。</p>
-      <p>土星紀の人間は、現在のような意識を持っていませんでした。鉱物よりもさらに低い、深い無意識の状態にありました。しかし、この萌芽が後の全ての発展の基礎となったのです。</p>
-      <p>土星紀の終わりに、宇宙はプララヤ（休息期間）に入り、全てが霊的世界に溶解しました。</p>
-    `,
     meditation: '熱を感じてください。それは最も原初的な物質状態です。暖かさの中に、意志の力を感じることができますか？'
   },
   {
@@ -740,20 +838,55 @@ const chapters = [
     title: '宇宙進化—太陽紀・月紀',
     titleDe: 'Die Weltentwickelung — Sonne und Mond',
     desc: '太陽紀でのエーテル体の形成、月紀でのアストラル体の付与。段階的な人間の発展。',
+    points: [
+      {
+        summary: '太陽紀は第二の惑星状態で、土星の熱が凝縮して気体と光が生まれた',
+        detail: 'プララヤの後、宇宙は太陽状態として再び顕現した。熱がさらに凝縮し、気体（空気）の状態が生まれた。そして初めて光が現れた。宇宙は輝く気体の球体となった。'
+      },
+      {
+        summary: '太陽紀で「叡智の霊たち」により、人間にエーテル体が付与された',
+        detail: '叡智の霊たち（キュリオテテス/主天使）が、人間の萌芽にエーテル体を与えた。これにより、人間は植物的な存在となり、成長と生命を持つようになった。物質体も気体状に変化した。'
+      },
+      {
+        summary: '太陽紀の人間は、植物のような深い眠りの意識状態にあった',
+        detail: '太陽紀の人間の意識は、現在の植物や深い睡眠状態に比較できる。外界の認識はなかったが、内的な生命過程がぼんやりと体験された。まだ目覚めた意識はなかった。'
+      },
+      {
+        summary: '太陽紀で、宇宙は太陽と惑星に分離し始めた',
+        detail: '進化の一定段階で、より高度な存在はより精妙な環境を必要とし、より低度な存在はより濃密な環境を必要とした。こうして、中心の太陽と周囲の惑星への分離が始まった。'
+      },
+      {
+        summary: '月紀は第三の惑星状態で、さらなる凝縮により水が生まれた',
+        detail: 'プララヤを経て、宇宙は月状態として顕現した。気体がさらに凝縮し、液体（水）の状態が生まれた。宇宙は水蒸気と液体からなる球体となった。'
+      },
+      {
+        summary: '月紀で「運動の霊たち」により、人間にアストラル体が付与された',
+        detail: '運動の霊たち（デュナミス/能天使）が、人間にアストラル体を与えた。これにより、人間は動物的な存在となり、感覚と感情を持つようになった。内的体験が可能になった。'
+      },
+      {
+        summary: '月紀の人間は、夢のような映像的意識を持っていた',
+        detail: '月紀の意識は、現在の夢の状態に似ていた。外界を直接認識するのではなく、象徴的なイメージとして体験した。色や形は、魂の状態を反映する内的映像として現れた。'
+      },
+      {
+        summary: '月紀で一部の存在が正常な発達から遅れ、後のルシファー的存在となった',
+        detail: '全ての存在が同じペースで進化するわけではない。月紀で一部の存在が遅れ、独自の道を歩み始めた。これらは後に人間に自由と誘惑をもたらすルシファー的存在となった。'
+      },
+      {
+        summary: '月紀で、太陽・月・地球の三分割が起こった',
+        detail: '月紀の途中で、宇宙は三つに分離した。最も精妙な部分は太陽として離れ、最も濃密な部分は月として離れ、中間の部分が後の地球となった。この分離が進化を可能にした。'
+      },
+      {
+        summary: '土星・太陽・月の三段階で、人間の下位三体の基礎が完成した',
+        detail: '土星紀で物質体、太陽紀でエーテル体、月紀でアストラル体の基礎が形成された。地球紀で自我が加わることで、人間の四つの構成要素が揃うことになる。'
+      }
+    ],
     concepts: [
-      { term: '太陽紀', termDe: 'Sonnenzustand', def: '第二の惑星状態。気体・光が生まれ、人間のエーテル体が付与された。植物的意識の段階。' },
-      { term: '月紀', termDe: 'Mondenzustand', def: '第三の惑星状態。水が生まれ、人間のアストラル体が付与された。夢のような意識の段階。' },
-      { term: '智天使（ケルビム）', termDe: 'Cherubim', def: '太陽紀で光を放射した霊的存在。' },
-      { term: '運動の霊たち', termDe: 'Geister der Bewegung', def: '月紀で人間にアストラル体を付与した存在。' },
+      { term: '太陽紀', termDe: 'Sonnenzustand', def: '第二の惑星状態。気体・光が生まれ、人間のエーテル体が付与された。' },
+      { term: '月紀', termDe: 'Mondenzustand', def: '第三の惑星状態。水が生まれ、人間のアストラル体が付与された。' },
+      { term: '叡智の霊たち', termDe: 'Geister der Weisheit / Kyriotetes', def: '太陽紀で人間にエーテル体を与えた存在。' },
+      { term: '運動の霊たち', termDe: 'Geister der Bewegung / Dynamis', def: '月紀で人間にアストラル体を与えた存在。' },
       { term: 'ルシファー的存在', termDe: 'Luziferische Wesen', def: '月紀で正常な発達から遅れた存在。後に人間に自由と誘惑をもたらす。' }
     ],
-    content: `
-      <p><strong>太陽紀</strong>は第二の段階です。土星の熱が凝縮し、気体（空気）が生まれました。そして初めて光が現れました。</p>
-      <p>この段階で、「叡智の霊たち」により人間にエーテル体が付与されました。人間は植物のような存在となり、深い眠りのような意識を持っていました。</p>
-      <p><strong>月紀</strong>は第三の段階です。さらなる凝縮により水が生まれました。「運動の霊たち」により人間にアストラル体が付与されました。</p>
-      <p>月紀の人間は、現在の夢のような意識を持っていました。まだ外界を明確に認識できませんでしたが、内的なイメージを体験していました。</p>
-      <p>重要なことに、月紀では一部の存在が正常な発達から遅れました。これが後の「ルシファー的存在」となり、人間に自由をもたらすと同時に、誘惑の可能性も開いたのです。</p>
-    `,
     meditation: '光を見つめてください。それは叡智の表現です。夢の中の意識を思い出してください。それは古い月の遺産です。'
   },
   {
@@ -762,26 +895,56 @@ const chapters = [
     title: '高次の認識への道',
     titleDe: 'Die Erkenntnis der höheren Welten',
     desc: '霊的世界を認識するための実践的な修行方法。瞑想、集中、道徳的発展。',
+    points: [
+      {
+        summary: '霊的認識は特別な人だけのものではなく、正しい訓練で誰でも到達できる',
+        detail: 'シュタイナーは、霊的能力が選ばれた少数者の特権ではないことを強調する。数学や音楽を学ぶように、霊的認識にも方法がある。忍耐と継続的な努力があれば、誰でもこの道を歩むことができる。'
+      },
+      {
+        summary: '霊的発展の前提として、十分な道徳的基盤を築くことが不可欠である',
+        detail: '霊的力は危険にもなりうる。道徳的に未熟なまま霊的能力を得ると、自分にも他者にも害を与える可能性がある。謙虚さ、誠実さ、他者への配慮が、安全な霊的発展の基盤である。'
+      },
+      {
+        summary: '準備段階では、思考の集中と畏敬の念の涵養が重要である',
+        detail: '最初の段階では、思考を一点に集中する練習をする。単純な対象——種子、結晶、幾何学図形など——に意識を集中し、散漫な思考を制御する。同時に、存在への畏敬の念を育てる。'
+      },
+      {
+        summary: '特定の思考内容に繰り返し集中することで、霊的器官が発達する',
+        detail: '肉体の筋肉が運動で発達するように、霊的器官は特定の思考練習で発達する。シュタイナーは多くの瞑想的練習を示している。例えば、種子から植物への成長を内的に追体験する練習などがある。'
+      },
+      {
+        summary: '六つの補助練習が、魂のバランスを保つために推奨される',
+        detail: '思考の制御、意志の制御、平静、肯定性、偏見のなさ、これら全ての調和——これが六つの補助練習である。これらは霊的発展における一面性と危険を防ぐ。'
+      },
+      {
+        summary: 'イマジネーションは、霊的イメージを知覚する最初の高次認識段階である',
+        detail: 'イマジネーションとは空想ではなく、霊的世界を象徴的イメージとして知覚する能力である。色、形、動きとして現れるが、これらは感覚的なものではなく、魂的・霊的現実の表現である。'
+      },
+      {
+        summary: 'インスピレーションは、霊的存在の言葉を聴く第二の認識段階である',
+        detail: 'イマジネーションが霊的イメージを見る能力なら、インスピレーションは霊的存在のコミュニケーションを聴く能力である。イメージの背後にある意味と意図が直接理解される。'
+      },
+      {
+        summary: 'イントゥイションは、霊的存在と一体化する最高の認識段階である',
+        detail: 'イントゥイションでは、認識者と認識対象の分離がなくなる。霊的存在の内部に入り込み、その存在自体を直接体験する。これは最も深い霊的認識であり、到達には長い修行が必要である。'
+      },
+      {
+        summary: '霊的修行には、経験豊かな指導者の導きが望ましい',
+        detail: '独学も可能だが、経験豊かな指導者の助けがあれば、危険を避け、効率的に進むことができる。しかしシュタイナーは、真の指導者は自由を尊重し、決して依存させないと強調する。'
+      },
+      {
+        summary: '日常生活こそが最も重要な修行の場である',
+        detail: '霊的発展は日常から離れた特別な状況でのみ起こるのではない。仕事、人間関係、日々の判断——これら全てが魂を訓練する機会である。意識的に生きることが、最も確実な霊的修行である。'
+      }
+    ],
     concepts: [
       { term: '霊的修行', termDe: 'Geistesschulung', def: '霊的認識能力を開発するための体系的な訓練。' },
       { term: '準備段階', termDe: 'Vorbereitung', def: '思考の集中と道徳的浄化を行う最初の段階。' },
-      { term: '啓明', termDe: 'Erleuchtung', def: '霊的光の中でイマジネーションが生まれる段階。' },
-      { term: 'イニシエーション（秘儀参入）', termDe: 'Einweihung / Initiation', def: '霊的世界への完全な参入。高次の存在との意識的な交流が可能になる。' },
       { term: 'イマジネーション', termDe: 'Imagination', def: '霊的イメージを知覚する能力。最初の高次認識段階。' },
       { term: 'インスピレーション', termDe: 'Inspiration', def: '霊的存在の言葉を聴く能力。第二の高次認識段階。' },
-      { term: 'イントゥイション', termDe: 'Intuition', def: '霊的存在と一体化する能力。第三の高次認識段階。' }
+      { term: 'イントゥイション', termDe: 'Intuition', def: '霊的存在と一体化する能力。第三の高次認識段階。' },
+      { term: '六つの補助練習', termDe: 'Sechs Nebenübungen', def: '魂のバランスを保つための基本的練習。' }
     ],
-    content: `
-      <p>シュタイナーは、霊的認識は特別な人だけのものではなく、正しい訓練により誰でも到達できると強調します。</p>
-      <p><strong>準備段階</strong>では、思考の集中力を養い、道徳的な浄化を行います。特定の対象に意識を集中する練習や、畏敬の念を育てることが含まれます。</p>
-      <p><strong>啓明</strong>の段階では、内的な光が生まれ、霊的なイメージ（イマジネーション）を知覚し始めます。</p>
-      <p><strong>イニシエーション</strong>により、霊的世界への完全な参入が達成されます。</p>
-      <p>高次の認識は三段階あります：<br>
-      • <strong>イマジネーション</strong>—霊的なイメージを見る<br>
-      • <strong>インスピレーション</strong>—霊的存在の言葉を聴く<br>
-      • <strong>イントゥイション</strong>—霊的存在と一体化する</p>
-      <p>重要なのは、この道を歩む前に、十分な道徳的基盤を築くことです。霊的力は道徳性と共に発達しなければなりません。</p>
-    `,
     meditation: '一つの単純な対象（種子、結晶など）を選び、5分間それだけに意識を集中してください。思考が逸れたら、静かに戻します。これが全ての霊的修行の基礎です。'
   },
   {
@@ -789,7 +952,49 @@ const chapters = [
     num: 'VII',
     title: '現在と未来の進化',
     titleDe: 'Gegenwart und Zukunft der Welt',
-    desc: '地球紀における自我の発達、アーリマンとルシファーの影響、そして未来の木星紀・金星紀・ヴァルカン紀。',
+    desc: '地球紀における自我の発達、ルシファーとアーリマンの影響、そして未来の木星紀・金星紀・ヴァルカン紀。',
+    points: [
+      {
+        summary: '地球紀は第四の惑星状態で、固体物質が生まれ、人間に自我が付与された',
+        detail: '地球紀で初めて固体の物質が生まれた。そして「形態の霊たち」（エロヒム）により、人間に自我が付与された。これにより人間は自己意識を持ち、道徳的・自由な存在となった。'
+      },
+      {
+        summary: '地球進化の中心的出来事は、キリストの地上への受肉である',
+        detail: 'シュタイナーによれば、キリストの受肉（ゴルゴタの秘儀）は地球進化の転換点である。これにより、人間は自我を正しく発展させる力を得た。キリスト衝動は宇宙的・霊的な事実である。'
+      },
+      {
+        summary: 'ルシファーは人間を物質から離れさせ、幻想と高慢に導こうとする',
+        detail: 'ルシファー（光をもたらす者）は、人間に自由と独立を与えたが、同時に物質を軽視させ、現実から遊離させようとする。芸術的陶酔、神秘主義への逃避、精神的高慢がその影響である。'
+      },
+      {
+        summary: 'アーリマンは人間を物質に縛り付け、霊的なものを否定させようとする',
+        detail: 'アーリマンは、人間を純粋に物質的な存在として固定しようとする。唯物論、機械的思考、霊性の否定がその影響である。技術文明の一面的発展も、アーリマン的傾向の表れである。'
+      },
+      {
+        summary: 'キリスト衝動は、ルシファーとアーリマンの間のバランスをもたらす',
+        detail: '人間の課題は、ルシファーにもアーリマンにも偏らず、両者の間の中道を歩むことである。キリスト衝動はこのバランスを可能にする。物質の中で霊を認識し、霊から物質を正しく扱う道である。'
+      },
+      {
+        summary: '現在の人間は、意識魂の発達段階にある',
+        detail: '人間の魂は、感覚魂→悟性魂→意識魂と発達してきた。現在は意識魂の時代であり、個人の自由と責任が問われる。この段階で、人間は霊的真理を自分自身の認識として獲得する課題を持つ。'
+      },
+      {
+        summary: '木星紀は地球の後に来る第五惑星状態で、霊我が完成する',
+        detail: '地球進化の後、宇宙は木星状態へと移行する。この段階で、人間は霊我（変容したアストラル体）を完全に発達させる。意識は現在より遥かに高く、霊的世界が直接認識される。'
+      },
+      {
+        summary: '金星紀は第六惑星状態で、生命霊が完成する',
+        detail: '木星紀の後、金星状態が来る。ここで人間は生命霊（変容したエーテル体）を完全に発達させる。生命そのものが意識的に支配され、創造的に用いられるようになる。'
+      },
+      {
+        summary: 'ヴァルカン紀は最終の第七惑星状態で、霊人が完成し進化が成就する',
+        detail: 'ヴァルカン紀で人間は霊人（変容した物質体）を完成させる。これにより七つの構成要素が全て発達し、人間は神的な創造存在となる。宇宙進化の目標が達成される。'
+      },
+      {
+        summary: '人間の自由な選択が、未来の進化の方向を決定する',
+        detail: '未来は固定されておらず、人間の自由な選択に委ねられている。善を選ぶか悪を選ぶか、霊的発展を求めるか物質に沈むか——この選択が個人の運命だけでなく、宇宙全体の進化に影響を与える。'
+      }
+    ],
     concepts: [
       { term: '地球紀', termDe: 'Erdenzustand', def: '現在の第四惑星状態。固体物質が生まれ、人間に自我が付与された。' },
       { term: 'ルシファー', termDe: 'Luzifer', def: '人間に自由と情熱をもたらすが、物質を軽視させる誘惑的存在。' },
@@ -799,15 +1004,6 @@ const chapters = [
       { term: '金星紀', termDe: 'Venuszustand', def: '第六惑星状態。生命霊が完成する段階。' },
       { term: 'ヴァルカン紀', termDe: 'Vulkanzustand', def: '最終の第七惑星状態。霊人が完成し、進化が完成する。' }
     ],
-    content: `
-      <p><strong>地球紀</strong>は第四の、中心的な段階です。ここで初めて固体物質が生まれ、人間に自我が付与されました。</p>
-      <p>地球進化には二つの対立する力が働いています：<br>
-      • <strong>ルシファー</strong>は人間を物質から離れさせ、幻想の中に引き込もうとします。<br>
-      • <strong>アーリマン</strong>は人間を物質に完全に縛り付け、霊的なものを否定させようとします。</p>
-      <p><strong>キリスト衝動</strong>は、この二つの力の間の健全なバランスをもたらします。物質の中で霊を認識し、霊から物質を正しく扱う道です。</p>
-      <p>未来において、地球は<strong>木星紀</strong>→<strong>金星紀</strong>→<strong>ヴァルカン紀</strong>と変容していきます。各段階で、人間の高次の構成要素が完成していきます。</p>
-      <p>ヴァルカン紀の終わりに、進化は完成し、全てが完全に霊化されます。人間は神的な創造存在となるのです。</p>
-    `,
     meditation: '日常生活の中で、ルシファー的な誘惑（現実逃避）とアーリマン的な誘惑（物質主義）を認識してみてください。その中間にある、バランスの取れた道を意識的に選んでください。'
   }
 ];
@@ -844,10 +1040,7 @@ const glossary = [
 // ═══════════════════════════════════════════════════════════
 
 const LS_KEY = 'steiner_study_v1';
-let state = {
-  completed: [],
-  notes: {}
-};
+let state = { completed: [], notes: {} };
 
 function loadState() {
   try {
@@ -890,7 +1083,6 @@ function updateProgress() {
   const completed = state.completed.length;
   const total = chapters.length;
   const pct = Math.round((completed / total) * 100);
-
   document.getElementById('progressValue').textContent = `${completed} / ${total} 章`;
   document.getElementById('progressFill').style.width = `${pct}%`;
 }
@@ -929,9 +1121,22 @@ function openChapter(id) {
       <div class="detail-title-de">${ch.titleDe}</div>
     </div>
 
-    <div class="content-section">
-      <div class="content-title">&#10022; 概要</div>
-      <div class="content-text">${ch.content}</div>
+    <div class="points-section">
+      <div class="points-title">&#10022; 要点（クリックで詳細表示）</div>
+      <div class="points-list">
+        ${ch.points.map((p, i) => `
+          <div class="point-item" onclick="togglePoint(this)">
+            <div class="point-header">
+              <span class="point-num">${i + 1}.</span>
+              <span class="point-summary">${p.summary}</span>
+              <span class="point-toggle">▼</span>
+            </div>
+            <div class="point-detail">
+              <p>${p.detail}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
     </div>
 
     <div class="concepts-section">
@@ -963,6 +1168,11 @@ function openChapter(id) {
   `;
 
   showSection('detail');
+  window.scrollTo(0, 0);
+}
+
+function togglePoint(el) {
+  el.classList.toggle('expanded');
 }
 
 function saveNote(chapterId, text) {
