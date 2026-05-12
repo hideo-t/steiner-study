@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神秘学概論 - ルドルフ・シュタイナー学習アプリ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1a1a2e;
+  --bg2: #16213e;
+  --bg3: #0f3460;
+  --card: #1f2544;
+  --border: rgba(233,196,106,0.15);
+  --gold: #e9c46a;
+  --gold2: #f4a261;
+  --text: #eae2d6;
+  --text2: #a8a0a0;
+  --text3: #6a6a7a;
+  --purple: #9d4edd;
+  --blue: #4cc9f0;
+  --green: #52b788;
+  --serif: 'Noto Serif JP', serif;
+  --display: 'Cormorant Garamond', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif);
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 2rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.header-symbol {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.header h1 {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.header-sub {
+  font-size: 1rem;
+  color: var(--text2);
+  letter-spacing: 0.15em;
+  font-weight: 300;
+}
+
+.header-author {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  color: var(--gold2);
+  margin-top: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--bg);
+  border-color: transparent;
+}
+
+/* Progress Bar */
+.progress-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+.progress-value {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Sections */
+.section { display: none; }
+.section.active { display: block; }
+
+/* Chapter List */
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chapter-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.chapter-card:hover {
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+
+.chapter-card:hover::before {
+  opacity: 1;
+}
+
+.chapter-card.completed {
+  border-color: var(--green);
+}
+
+.chapter-card.completed::before {
+  background: var(--green);
+  opacity: 1;
+}
+
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.chapter-num {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+.chapter-status {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background: var(--bg);
+  color: var(--text3);
+}
+
+.chapter-card.completed .chapter-status {
+  background: rgba(82,183,136,0.2);
+  color: var(--green);
+}
+
+.chapter-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.chapter-title-de {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.chapter-desc {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* Chapter Detail */
+.chapter-detail {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text2);
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+.back-btn:hover { color: var(--gold); }
+
+.detail-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-num {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.detail-title-de {
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* Concepts */
+.concepts-section {
+  margin-bottom: 2rem;
+}
+
+.concepts-title {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.concept-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.concept-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.concept-term {
+  font-weight: 500;
+  color: var(--gold2);
+  margin-bottom: 0.25rem;
+}
+
+.concept-term-de {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.concept-def {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* Content */
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.content-title {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.content-text {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 2;
+}
+
+.content-text p {
+  margin-bottom: 1rem;
+}
+
+.content-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Meditation */
+.meditation-section {
+  background: linear-gradient(135deg, rgba(157,78,221,0.1), rgba(76,201,240,0.1));
+  border: 1px solid rgba(157,78,221,0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.meditation-title {
+  font-size: 1rem;
+  color: var(--purple);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meditation-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 2;
+  font-style: italic;
+}
+
+/* Notes */
+.notes-section {
+  margin-bottom: 2rem;
+}
+
+.notes-title {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  resize: vertical;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* Complete Button */
+.complete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--bg);
+  border: none;
+  border-radius: 0.75rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.complete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(233,196,106,0.3);
+}
+
+.complete-btn.completed {
+  background: var(--green);
+}
+
+/* Glossary */
+.glossary-search {
+  margin-bottom: 1.5rem;
+}
+
+.glossary-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 0.9rem;
+}
+
+.glossary-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.glossary-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.glossary-term {
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.glossary-term-de {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.glossary-def {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* My Notes Section */
+.my-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.my-note-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.my-note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.my-note-chapter {
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.my-note-date {
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+.my-note-content {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text3);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 0.8rem;
+}
+
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .app { padding: 1rem; }
+  .header h1 { font-size: 1.75rem; }
+  .chapter-card { padding: 1.25rem; }
+  .chapter-detail { padding: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="header">
+    <div class="header-symbol">&#10070;</div>
+    <h1>Occult Science</h1>
+    <div class="header-sub">神秘学概論</div>
+    <div class="header-author">Rudolf Steiner</div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showSection('chapters')">章立て</button>
+    <button class="nav-btn" onclick="showSection('glossary')">用語集</button>
+    <button class="nav-btn" onclick="showSection('notes')">学習ノート</button>
+  </nav>
+
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">学習進捗</span>
+      <span class="progress-value" id="progressValue">0 / 7 章</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- Chapters Section -->
+  <section class="section active" id="sec-chapters">
+    <div class="chapter-list" id="chapterList"></div>
+  </section>
+
+  <!-- Chapter Detail -->
+  <section class="section" id="sec-detail">
+    <div class="chapter-detail" id="chapterDetail"></div>
+  </section>
+
+  <!-- Glossary Section -->
+  <section class="section" id="sec-glossary">
+    <div class="glossary-search">
+      <input type="text" class="glossary-input" placeholder="用語を検索..." oninput="filterGlossary(this.value)">
+    </div>
+    <div class="glossary-list" id="glossaryList"></div>
+  </section>
+
+  <!-- Notes Section -->
+  <section class="section" id="sec-notes">
+    <div class="my-notes-list" id="myNotesList"></div>
+  </section>
+
+  <footer class="footer">
+    神秘学概論 学習アプリ v1.0<br>
+    Based on "Die Geheimwissenschaft im Umriß" (1910)
+  </footer>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════
+
+const chapters = [
+  {
+    id: 1,
+    num: 'I',
+    title: '神秘学の性格',
+    titleDe: 'Charakter der Geheimwissenschaft',
+    desc: '神秘学とは何か、その認識方法と科学的態度について。感覚を超えた世界への道筋を示す序論。',
+    concepts: [
+      { term: '神秘学', termDe: 'Geheimwissenschaft', def: '感覚で知覚できる世界の背後にある、隠された霊的現実を探求する学問。「秘密の」科学ではなく、通常は隠されている領域を扱う科学。' },
+      { term: '超感覚的認識', termDe: 'übersinnliche Erkenntnis', def: '物質的感覚器官を超えて、霊的世界を直接認識する能力。訓練によって開発可能。' },
+      { term: '霊的研究', termDe: 'Geistesforschung', def: '自然科学が物質世界を研究するように、霊的世界を体系的に研究すること。' }
+    ],
+    content: `
+      <p>神秘学は、通常の感覚では認識できない世界の法則を探求します。これは「秘密」の学問ではなく、通常は「隠されている」領域を扱う学問です。</p>
+      <p>自然科学が物質世界を研究するのと同様に、神秘学は霊的世界を体系的に研究します。しかしその方法は異なります。霊的認識には、魂の特別な訓練が必要です。</p>
+      <p>シュタイナーは、この認識が万人に開かれていることを強調します。正しい道を歩めば、誰でも霊的真理を直接体験できるのです。</p>
+    `,
+    meditation: '「私は感覚の背後にある真実を求める。見えるものの奥に、見えないものが存在する。」この言葉を静かに繰り返し、その意味を深く味わってください。'
+  },
+  {
+    id: 2,
+    num: 'II',
+    title: '人間の本質',
+    titleDe: 'Das Wesen des Menschen',
+    desc: '人間を構成する四つの要素—物質体、エーテル体、アストラル体、自我—の詳細な解説。',
+    concepts: [
+      { term: '物質体', termDe: 'Physischer Leib', def: '鉱物界と共有する物質的身体。死後は分解して物質界に戻る。' },
+      { term: 'エーテル体（生命体）', termDe: 'Ätherleib / Lebensleib', def: '植物界と共有する生命力の担い手。成長、再生、記憶の基盤。睡眠中も物質体と結びついている。' },
+      { term: 'アストラル体（感受体）', termDe: 'Astralleib / Empfindungsleib', def: '動物界と共有する感情・欲望の担い手。苦楽、衝動、情熱の座。睡眠中は物質体から離れる。' },
+      { term: '自我', termDe: 'Ich', def: '人間のみが持つ霊的核心。自己意識、道徳性、個性の源泉。「私」と言える存在。' },
+      { term: '霊我（マナス）', termDe: 'Geistselbst / Manas', def: '自我がアストラル体を変容させて生まれる高次の構成要素。' },
+      { term: '生命霊（ブッディ）', termDe: 'Lebensgeist / Buddhi', def: '自我がエーテル体を変容させて生まれる高次の構成要素。' },
+      { term: '霊人（アートマ）', termDe: 'Geistesmensch / Atma', def: '自我が物質体を変容させて生まれる最高次の構成要素。' }
+    ],
+    content: `
+      <p>人間は単なる物質的存在ではありません。シュタイナーは、人間を四つの基本的な構成要素から成るものとして描写します。</p>
+      <p><strong>物質体</strong>は、私たちが通常「身体」と呼ぶものです。鉱物と同じ法則に従い、死後は分解します。</p>
+      <p><strong>エーテル体</strong>は、物質体に生命を与える力の担い手です。植物もこれを持っています。記憶と成長の基盤となります。</p>
+      <p><strong>アストラル体</strong>は、感情と意識の担い手です。動物もこれを持ち、快・不快を感じることができます。</p>
+      <p><strong>自我</strong>は、人間だけが持つ霊的核心です。これにより人間は「私」と言え、自己を意識し、道徳的存在となれます。</p>
+      <p>さらに、自我の働きによって下位の構成要素が変容すると、霊我・生命霊・霊人という高次の要素が発達します。</p>
+    `,
+    meditation: '「私の中には物質を超えた何かがある。生命があり、感情があり、そして—私自身がいる。」自分の存在の層を、内側から観察してみてください。'
+  },
+  {
+    id: 3,
+    num: 'III',
+    title: '眠りと死',
+    titleDe: 'Schlaf und Tod',
+    desc: '睡眠と死における人間の構成要素の変化。死後の世界と輪廻転生の霊的プロセス。',
+    concepts: [
+      { term: '睡眠', termDe: 'Schlaf', def: 'アストラル体と自我が物質体・エーテル体から離れる状態。霊的世界で回復が行われる。' },
+      { term: '死', termDe: 'Tod', def: 'エーテル体も物質体から離れる完全な分離。数日間の記憶のパノラマの後、エーテル体も溶解する。' },
+      { term: 'カマロカ', termDe: 'Kamaloka', def: '死後、アストラル体の欲望が浄化される期間。地上生活の約三分の一の期間続く。' },
+      { term: 'デヴァチャン（霊界）', termDe: 'Devachan / Geisterland', def: 'カマロカの後に入る純粋な霊的領域。次の転生の準備が行われる。' },
+      { term: '輪廻転生', termDe: 'Wiederverkörperung', def: '魂が繰り返し地上に生まれ変わること。各転生で自我が成長する。' },
+      { term: 'カルマ', termDe: 'Karma', def: '行為の結果が将来に影響を与える宇宙的法則。道徳的因果律。' }
+    ],
+    content: `
+      <p>睡眠と死は、同じプロセスの異なる段階として理解できます。</p>
+      <p><strong>睡眠</strong>において、アストラル体と自我は物質体・エーテル体から離れ、霊的世界で活動します。しかしエーテル体は物質体と結びついたままなので、生命は維持されます。</p>
+      <p><strong>死</strong>においては、エーテル体も物質体から離れます。最初の数日間、死者は自分の全生涯を一つのパノラマとして体験します。これはエーテル体に刻まれた記憶の解放です。</p>
+      <p>その後、アストラル体の欲望が浄化される<strong>カマロカ</strong>の期間を経て、純粋な霊的世界<strong>デヴァチャン</strong>に入ります。</p>
+      <p>デヴァチャンでは、過去の人生の成果を霊的に消化し、次の転生の計画を立てます。そして再び地上に生まれ、新たな学びを始めるのです。</p>
+    `,
+    meditation: '毎晩の眠りは、小さな死です。目覚めは、小さな誕生です。眠りに入る瞬間、意識がどのように変化するかを観察してみてください。'
+  },
+  {
+    id: 4,
+    num: 'IV',
+    title: '宇宙進化—土星紀',
+    titleDe: 'Die Weltentwickelung — Saturn',
+    desc: '地球以前の宇宙進化。土星紀における物質体の萌芽と熱の世界。',
+    concepts: [
+      { term: '土星紀', termDe: 'Saturnzustand', def: '地球進化の最初の段階。純粋な熱からなる世界で、人間の物質体の萌芽が形成された。' },
+      { term: '意志の霊たち（座天使）', termDe: 'Geister des Willens / Throne', def: '土星紀で熱を放射し、人間の物質体の基礎を与えた高次の霊的存在。' },
+      { term: '熱エーテル', termDe: 'Wärmeäther', def: '土星紀の基本物質。まだ気体でも液体でも固体でもない、純粋な熱の状態。' },
+      { term: 'プララヤ（宇宙的休息）', termDe: 'Pralaya', def: '各惑星状態の間にある休息期間。顕現が霊的世界に溶解する。' }
+    ],
+    content: `
+      <p>現在の地球は、長い宇宙進化の一段階にすぎません。シュタイナーは、四つの大きな惑星状態を描写します。</p>
+      <p><strong>土星紀</strong>は最初の段階です。この時、宇宙は純粋な熱からなる球体でした。まだ光も空気も水も固体もありません。</p>
+      <p>この熱の世界で、「意志の霊たち」（座天使）が自らの存在の一部を犠牲にし、人間の物質体の最初の萌芽を形成しました。</p>
+      <p>土星紀の人間は、現在のような意識を持っていませんでした。鉱物よりもさらに低い、深い無意識の状態にありました。しかし、この萌芽が後の全ての発展の基礎となったのです。</p>
+      <p>土星紀の終わりに、宇宙はプララヤ（休息期間）に入り、全てが霊的世界に溶解しました。</p>
+    `,
+    meditation: '熱を感じてください。それは最も原初的な物質状態です。暖かさの中に、意志の力を感じることができますか？'
+  },
+  {
+    id: 5,
+    num: 'V',
+    title: '宇宙進化—太陽紀・月紀',
+    titleDe: 'Die Weltentwickelung — Sonne und Mond',
+    desc: '太陽紀でのエーテル体の形成、月紀でのアストラル体の付与。段階的な人間の発展。',
+    concepts: [
+      { term: '太陽紀', termDe: 'Sonnenzustand', def: '第二の惑星状態。気体・光が生まれ、人間のエーテル体が付与された。植物的意識の段階。' },
+      { term: '月紀', termDe: 'Mondenzustand', def: '第三の惑星状態。水が生まれ、人間のアストラル体が付与された。夢のような意識の段階。' },
+      { term: '智天使（ケルビム）', termDe: 'Cherubim', def: '太陽紀で光を放射した霊的存在。' },
+      { term: '運動の霊たち', termDe: 'Geister der Bewegung', def: '月紀で人間にアストラル体を付与した存在。' },
+      { term: 'ルシファー的存在', termDe: 'Luziferische Wesen', def: '月紀で正常な発達から遅れた存在。後に人間に自由と誘惑をもたらす。' }
+    ],
+    content: `
+      <p><strong>太陽紀</strong>は第二の段階です。土星の熱が凝縮し、気体（空気）が生まれました。そして初めて光が現れました。</p>
+      <p>この段階で、「叡智の霊たち」により人間にエーテル体が付与されました。人間は植物のような存在となり、深い眠りのような意識を持っていました。</p>
+      <p><strong>月紀</strong>は第三の段階です。さらなる凝縮により水が生まれました。「運動の霊たち」により人間にアストラル体が付与されました。</p>
+      <p>月紀の人間は、現在の夢のような意識を持っていました。まだ外界を明確に認識できませんでしたが、内的なイメージを体験していました。</p>
+      <p>重要なことに、月紀では一部の存在が正常な発達から遅れました。これが後の「ルシファー的存在」となり、人間に自由をもたらすと同時に、誘惑の可能性も開いたのです。</p>
+    `,
+    meditation: '光を見つめてください。それは叡智の表現です。夢の中の意識を思い出してください。それは古い月の遺産です。'
+  },
+  {
+    id: 6,
+    num: 'VI',
+    title: '高次の認識への道',
+    titleDe: 'Die Erkenntnis der höheren Welten',
+    desc: '霊的世界を認識するための実践的な修行方法。瞑想、集中、道徳的発展。',
+    concepts: [
+      { term: '霊的修行', termDe: 'Geistesschulung', def: '霊的認識能力を開発するための体系的な訓練。' },
+      { term: '準備段階', termDe: 'Vorbereitung', def: '思考の集中と道徳的浄化を行う最初の段階。' },
+      { term: '啓明', termDe: 'Erleuchtung', def: '霊的光の中でイマジネーションが生まれる段階。' },
+      { term: 'イニシエーション（秘儀参入）', termDe: 'Einweihung / Initiation', def: '霊的世界への完全な参入。高次の存在との意識的な交流が可能になる。' },
+      { term: 'イマジネーション', termDe: 'Imagination', def: '霊的イメージを知覚する能力。最初の高次認識段階。' },
+      { term: 'インスピレーション', termDe: 'Inspiration', def: '霊的存在の言葉を聴く能力。第二の高次認識段階。' },
+      { term: 'イントゥイション', termDe: 'Intuition', def: '霊的存在と一体化する能力。第三の高次認識段階。' }
+    ],
+    content: `
+      <p>シュタイナーは、霊的認識は特別な人だけのものではなく、正しい訓練により誰でも到達できると強調します。</p>
+      <p><strong>準備段階</strong>では、思考の集中力を養い、道徳的な浄化を行います。特定の対象に意識を集中する練習や、畏敬の念を育てることが含まれます。</p>
+      <p><strong>啓明</strong>の段階では、内的な光が生まれ、霊的なイメージ（イマジネーション）を知覚し始めます。</p>
+      <p><strong>イニシエーション</strong>により、霊的世界への完全な参入が達成されます。</p>
+      <p>高次の認識は三段階あります：<br>
+      • <strong>イマジネーション</strong>—霊的なイメージを見る<br>
+      • <strong>インスピレーション</strong>—霊的存在の言葉を聴く<br>
+      • <strong>イントゥイション</strong>—霊的存在と一体化する</p>
+      <p>重要なのは、この道を歩む前に、十分な道徳的基盤を築くことです。霊的力は道徳性と共に発達しなければなりません。</p>
+    `,
+    meditation: '一つの単純な対象（種子、結晶など）を選び、5分間それだけに意識を集中してください。思考が逸れたら、静かに戻します。これが全ての霊的修行の基礎です。'
+  },
+  {
+    id: 7,
+    num: 'VII',
+    title: '現在と未来の進化',
+    titleDe: 'Gegenwart und Zukunft der Welt',
+    desc: '地球紀における自我の発達、アーリマンとルシファーの影響、そして未来の木星紀・金星紀・ヴァルカン紀。',
+    concepts: [
+      { term: '地球紀', termDe: 'Erdenzustand', def: '現在の第四惑星状態。固体物質が生まれ、人間に自我が付与された。' },
+      { term: 'ルシファー', termDe: 'Luzifer', def: '人間に自由と情熱をもたらすが、物質を軽視させる誘惑的存在。' },
+      { term: 'アーリマン', termDe: 'Ahriman', def: '人間を物質に縛り付け、霊的なものを否定させようとする存在。' },
+      { term: 'キリスト衝動', termDe: 'Christus-Impuls', def: 'ルシファーとアーリマンの間のバランスをもたらす中心的な力。' },
+      { term: '木星紀', termDe: 'Jupiterzustand', def: '地球の後に来る第五惑星状態。霊我が完成する段階。' },
+      { term: '金星紀', termDe: 'Venuszustand', def: '第六惑星状態。生命霊が完成する段階。' },
+      { term: 'ヴァルカン紀', termDe: 'Vulkanzustand', def: '最終の第七惑星状態。霊人が完成し、進化が完成する。' }
+    ],
+    content: `
+      <p><strong>地球紀</strong>は第四の、中心的な段階です。ここで初めて固体物質が生まれ、人間に自我が付与されました。</p>
+      <p>地球進化には二つの対立する力が働いています：<br>
+      • <strong>ルシファー</strong>は人間を物質から離れさせ、幻想の中に引き込もうとします。<br>
+      • <strong>アーリマン</strong>は人間を物質に完全に縛り付け、霊的なものを否定させようとします。</p>
+      <p><strong>キリスト衝動</strong>は、この二つの力の間の健全なバランスをもたらします。物質の中で霊を認識し、霊から物質を正しく扱う道です。</p>
+      <p>未来において、地球は<strong>木星紀</strong>→<strong>金星紀</strong>→<strong>ヴァルカン紀</strong>と変容していきます。各段階で、人間の高次の構成要素が完成していきます。</p>
+      <p>ヴァルカン紀の終わりに、進化は完成し、全てが完全に霊化されます。人間は神的な創造存在となるのです。</p>
+    `,
+    meditation: '日常生活の中で、ルシファー的な誘惑（現実逃避）とアーリマン的な誘惑（物質主義）を認識してみてください。その中間にある、バランスの取れた道を意識的に選んでください。'
+  }
+];
+
+const glossary = [
+  { term: '神秘学', termDe: 'Geheimwissenschaft', def: '感覚を超えた霊的世界を体系的に研究する学問。' },
+  { term: '人智学', termDe: 'Anthroposophie', def: 'シュタイナーが創始した霊的世界観。「人間についての叡智」の意。' },
+  { term: '物質体', termDe: 'Physischer Leib', def: '物質的な身体。鉱物界と共通。' },
+  { term: 'エーテル体', termDe: 'Ätherleib', def: '生命力の担い手。植物界と共通。' },
+  { term: 'アストラル体', termDe: 'Astralleib', def: '感情・欲望の担い手。動物界と共通。' },
+  { term: '自我', termDe: 'Ich', def: '人間のみが持つ霊的核心。自己意識の源泉。' },
+  { term: '霊我', termDe: 'Geistselbst / Manas', def: '変容したアストラル体。高次自我の最初の段階。' },
+  { term: '生命霊', termDe: 'Lebensgeist / Buddhi', def: '変容したエーテル体。高次自我の第二段階。' },
+  { term: '霊人', termDe: 'Geistesmensch / Atma', def: '変容した物質体。高次自我の最高段階。' },
+  { term: 'カルマ', termDe: 'Karma', def: '行為の結果が将来に影響する法則。霊的因果律。' },
+  { term: '輪廻転生', termDe: 'Wiederverkörperung', def: '魂が繰り返し地上に生まれること。' },
+  { term: 'カマロカ', termDe: 'Kamaloka', def: '死後の浄化期間。欲望界。' },
+  { term: 'デヴァチャン', termDe: 'Devachan', def: '死後の霊的世界。天界。' },
+  { term: '土星紀', termDe: 'Saturnzustand', def: '宇宙進化の第一段階。熱の世界。' },
+  { term: '太陽紀', termDe: 'Sonnenzustand', def: '宇宙進化の第二段階。気体と光の世界。' },
+  { term: '月紀', termDe: 'Mondenzustand', def: '宇宙進化の第三段階。水の世界。' },
+  { term: '地球紀', termDe: 'Erdenzustand', def: '宇宙進化の第四段階。現在。固体の世界。' },
+  { term: 'ルシファー', termDe: 'Luzifer', def: '光をもたらす者。人間に自由と誘惑を与える存在。' },
+  { term: 'アーリマン', termDe: 'Ahriman', def: '物質に縛る者。唯物論と硬化を促す存在。' },
+  { term: 'イマジネーション', termDe: 'Imagination', def: '霊的イメージを知覚する能力。' },
+  { term: 'インスピレーション', termDe: 'Inspiration', def: '霊的言葉を聴く能力。' },
+  { term: 'イントゥイション', termDe: 'Intuition', def: '霊的存在と一体化する能力。' },
+  { term: 'アカシャ年代記', termDe: 'Akasha-Chronik', def: '全ての出来事が記録されている霊的記録。' },
+  { term: '位階', termDe: 'Hierarchien', def: '天使から座天使までの霊的存在の階層。' }
+];
+
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+
+const LS_KEY = 'steiner_study_v1';
+let state = {
+  completed: [],
+  notes: {}
+};
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved) state = JSON.parse(saved);
+  } catch(e) {}
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  if (name === 'chapters') {
+    document.getElementById('sec-chapters').classList.add('active');
+    document.querySelectorAll('.nav-btn')[0].classList.add('active');
+  } else if (name === 'glossary') {
+    document.getElementById('sec-glossary').classList.add('active');
+    document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    renderGlossary();
+  } else if (name === 'notes') {
+    document.getElementById('sec-notes').classList.add('active');
+    document.querySelectorAll('.nav-btn')[2].classList.add('active');
+    renderMyNotes();
+  } else if (name === 'detail') {
+    document.getElementById('sec-detail').classList.add('active');
+  }
+}
+
+function updateProgress() {
+  const completed = state.completed.length;
+  const total = chapters.length;
+  const pct = Math.round((completed / total) * 100);
+
+  document.getElementById('progressValue').textContent = `${completed} / ${total} 章`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+}
+
+function renderChapters() {
+  const list = document.getElementById('chapterList');
+  list.innerHTML = chapters.map(ch => {
+    const isCompleted = state.completed.includes(ch.id);
+    return `
+      <div class="chapter-card ${isCompleted ? 'completed' : ''}" onclick="openChapter(${ch.id})">
+        <div class="chapter-header">
+          <span class="chapter-num">CHAPTER ${ch.num}</span>
+          <span class="chapter-status">${isCompleted ? '完了' : '未学習'}</span>
+        </div>
+        <div class="chapter-title">${ch.title}</div>
+        <div class="chapter-title-de">${ch.titleDe}</div>
+        <div class="chapter-desc">${ch.desc}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function openChapter(id) {
+  const ch = chapters.find(c => c.id === id);
+  if (!ch) return;
+
+  const isCompleted = state.completed.includes(ch.id);
+  const note = state.notes[ch.id] || '';
+
+  document.getElementById('chapterDetail').innerHTML = `
+    <div class="back-btn" onclick="showSection('chapters')">← 章一覧に戻る</div>
+
+    <div class="detail-header">
+      <div class="detail-num">CHAPTER ${ch.num}</div>
+      <div class="detail-title">${ch.title}</div>
+      <div class="detail-title-de">${ch.titleDe}</div>
+    </div>
+
+    <div class="content-section">
+      <div class="content-title">&#10022; 概要</div>
+      <div class="content-text">${ch.content}</div>
+    </div>
+
+    <div class="concepts-section">
+      <div class="concepts-title">&#10038; 重要概念</div>
+      <div class="concept-list">
+        ${ch.concepts.map(c => `
+          <div class="concept-item">
+            <div class="concept-term">${c.term}</div>
+            <div class="concept-term-de">${c.termDe}</div>
+            <div class="concept-def">${c.def}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="meditation-section">
+      <div class="meditation-title">&#10047; 瞑想的実践</div>
+      <div class="meditation-text">${ch.meditation}</div>
+    </div>
+
+    <div class="notes-section">
+      <div class="notes-title">&#9998; 学習ノート</div>
+      <textarea class="notes-textarea" placeholder="この章について感じたこと、気づき、疑問などを記録してください..." onchange="saveNote(${ch.id}, this.value)">${note}</textarea>
+    </div>
+
+    <button class="complete-btn ${isCompleted ? 'completed' : ''}" onclick="toggleComplete(${ch.id})">
+      ${isCompleted ? '&#10003; 学習完了' : 'この章の学習を完了にする'}
+    </button>
+  `;
+
+  showSection('detail');
+}
+
+function saveNote(chapterId, text) {
+  state.notes[chapterId] = text;
+  saveState();
+}
+
+function toggleComplete(chapterId) {
+  const idx = state.completed.indexOf(chapterId);
+  if (idx >= 0) {
+    state.completed.splice(idx, 1);
+  } else {
+    state.completed.push(chapterId);
+  }
+  saveState();
+  updateProgress();
+  openChapter(chapterId);
+}
+
+function renderGlossary(filter = '') {
+  const list = document.getElementById('glossaryList');
+  const filtered = filter
+    ? glossary.filter(g =>
+        g.term.includes(filter) ||
+        g.termDe.toLowerCase().includes(filter.toLowerCase()) ||
+        g.def.includes(filter)
+      )
+    : glossary;
+
+  if (filtered.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">&#128269;</div>
+        <div>該当する用語が見つかりません</div>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = filtered.map(g => `
+    <div class="glossary-item">
+      <div class="glossary-term">${g.term}</div>
+      <div class="glossary-term-de">${g.termDe}</div>
+      <div class="glossary-def">${g.def}</div>
+    </div>
+  `).join('');
+}
+
+function filterGlossary(value) {
+  renderGlossary(value);
+}
+
+function renderMyNotes() {
+  const list = document.getElementById('myNotesList');
+  const notesEntries = Object.entries(state.notes).filter(([id, text]) => text.trim());
+
+  if (notesEntries.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">&#128221;</div>
+        <div>まだノートがありません</div>
+        <div style="margin-top:0.5rem;font-size:0.85rem">各章の学習時にノートを記録できます</div>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = notesEntries.map(([id, text]) => {
+    const ch = chapters.find(c => c.id === parseInt(id));
+    return `
+      <div class="my-note-card" onclick="openChapter(${id})">
+        <div class="my-note-header">
+          <span class="my-note-chapter">Chapter ${ch ? ch.num : id}: ${ch ? ch.title : ''}</span>
+        </div>
+        <div class="my-note-content">${text}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+
+loadState();
+renderChapters();
+updateProgress();
+renderGlossary();
+</script>
+
+</body>
+</html>
